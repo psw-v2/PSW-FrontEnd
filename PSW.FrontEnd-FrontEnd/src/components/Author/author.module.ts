@@ -3,10 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthorLandingPageComponent } from './author-landing-page/author-landing-page.component';
 import { CreateTourComponent } from './create-tour/create-tour.component';
+import { FilterPipe } from '../../shared/filter-pipe';
+import { TourDetailsComponent } from './tour-details/tour-details.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [AuthorLandingPageComponent, CreateTourComponent],
-  imports: [CommonModule, FormsModule],
+  declarations: [
+    AuthorLandingPageComponent,
+    CreateTourComponent,
+    FilterPipe,
+    TourDetailsComponent,
+  ],
+  imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   exports: [AuthorLandingPageComponent, CreateTourComponent],
 })
 export class AuthorModule {}

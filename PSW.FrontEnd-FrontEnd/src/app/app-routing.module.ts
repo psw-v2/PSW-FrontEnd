@@ -11,6 +11,7 @@ import { AuthorGuard } from '../auth/author.guard';
 import { TouristGuard } from '../auth/tourist.guard';
 import { ErrorComponent } from '../components/Universal/error/error.component';
 import { CreateTourComponent } from '../components/Author/create-tour/create-tour.component';
+import { TourDetailsComponent } from '../components/Author/tour-details/tour-details.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -33,6 +34,11 @@ const routes: Routes = [
   {
     path: 'create-tour',
     component: CreateTourComponent,
+    canActivate: [AuthorGuard],
+  },
+  {
+    path: 'tour-details/:tourId',
+    component: TourDetailsComponent,
     canActivate: [AuthorGuard],
   },
   //TOURIST

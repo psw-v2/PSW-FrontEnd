@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LeafletMapComponent } from './leafleat-map/leafleat-map.component';
 
 @NgModule({
-    declarations: [],
-    imports: [CommonModule],
-    exports: [],
+  declarations: [LeafletMapComponent],
+  imports: [CommonModule],
+  exports: [LeafletMapComponent],
 })
 export class SharedModule {}

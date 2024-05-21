@@ -1,0 +1,23 @@
+.map-frame {
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+#map {
+  height: 600px;
+  border-radius: 8px;
+}
+::ng-deep .leaflet-routing-container {
+  display: none;
+}
+
+.leaflet-pane .leaflet-marker-icon,
+.leaflet-pane .leaflet-marker-shadow {
+  border: none !important;
+  border-radius: 0 !important; // Remove if there's an unwanted border-radius
+}
+
+.leaflet-marker-icon {
+  background: none !important;
+  border: none !important;
+}

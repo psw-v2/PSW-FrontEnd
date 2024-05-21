@@ -1,0 +1,44 @@
+<div class="flex justify-center items-center h-screen m-auto container">
+  <div class="grid grid-cols-2 w-full gapx-5">
+    <div>
+      <app-leafleat-map
+        (mapClick)="onMapClick($event)"
+        class="w-full"
+      ></app-leafleat-map>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <label for="">Longitude</label>
+      <input
+        disabled
+        [(ngModel)]="longitude"
+        class="text-zinc-900 w-1/2 h-10 mt-1 mb-9 rounded-md text-center bg-violet-200 flex justify-center"
+        placeholder="Click on map to get longitude"
+      />
+      <label for="latitude">Latitude</label>
+      <input
+        disabled
+        name="latitude"
+        [(ngModel)]="latitude"
+        class="text-zinc-900 w-1/2 h-10 mt-1 mb-9 rounded-md text-center bg-violet-200 flex justify-center"
+        placeholder="Click on map to get latitude"
+      />
+
+      <label class="" for="file"> Checkpoint Image </label>
+      <input
+        type="file"
+        class="text-zinc-900 w-1/2 h-10 mt-1 mb-9 rounded-md text-center bg-violet-200 flex justify-center"
+        style="text-align: center; padding-left: 10%; padding-right: 0"
+        name="file"
+        required
+      />
+      <!-- (change)="onFileSelected($event)" -->
+
+      <button
+        class="p-2 rounded border-0 bg-violet-950 mt-2 font-thin text-white duration-300 hover:bg-violet-400 hover:text-black"
+      >
+        Create Checkpoint
+      </button>
+    </div>
+  </div>
+</div>

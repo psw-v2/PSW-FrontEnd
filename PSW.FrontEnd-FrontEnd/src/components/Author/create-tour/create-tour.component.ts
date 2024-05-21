@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 import { TourService } from '../../../services/tour.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-tour',
@@ -20,7 +21,8 @@ export class CreateTourComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private tourService: TourService
+    private tourService: TourService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -30,8 +32,8 @@ export class CreateTourComponent implements OnInit {
   onSubmit(): void {
     const tourData = {
       name: this.tourName,
-      difficulty: this.tourDifficulty,
-      interest: this.tourInterest,
+      difficulty: Number(this.tourDifficulty),
+      interest: Number(this.tourInterest),
       price: this.tourPrice,
       status: this.tourStatus,
       authorId: this.authorId,
@@ -39,6 +41,9 @@ export class CreateTourComponent implements OnInit {
 
     this.tourService.createTour(tourData).subscribe((response) => {
       console.log(response);
+      this.snackBar.open('Tour created successfully', 'Close', {
+        duration: 2000,
+      });
       this.router.navigate(['/author']);
     });
   }

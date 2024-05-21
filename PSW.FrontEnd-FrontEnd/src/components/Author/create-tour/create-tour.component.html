@@ -1,5 +1,5 @@
-<div class="flex justify-center items-center h-screen m-auto container border">
-  <div class="bg-violet-200 rounded p-10 w-2/5 animate-flip-up">
+<div class="flex justify-center items-center h-screen m-auto container">
+  <div class="bg-violet-200 rounded p-10 w-2/5 animate-flip-down">
     <form class="mx-auto" (ngSubmit)="onSubmit()">
       <div class="mb-4">
         <label class="flex justify-center text-xl mb-1 text-gray-700" for="name"
@@ -28,7 +28,7 @@
           <option value="" disabled selected>Select your interest</option>
           <option [value]="0">Easy</option>
           <option [value]="1">Medium</option>
-          <option [value]="2"></option>
+          <option [value]="2">Hard</option>
         </select>
       </div>
 

@@ -1,0 +1,32 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; // Prevent horizontal scroll
+  overflow-y: hidden; // Prevent additional vertical scroll on the body
+}
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // Fits at least the height of the viewport
+  width: 100%; // Full width
+  overflow: hidden; // No overflow from the container itself
+}
+
+main {
+  overflow-y: auto; /* Allows vertical scrolling */
+}
+
+footer {
+  width: 100%; // Ensures it spans the bottom of the page
+  flex-shrink: 0; // Ensures footer does not shrink away
+}
+
+main::-webkit-scrollbar {
+  display: none; /* This will hide the scrollbar in WebKit browsers */
+}
+main {
+  scrollbar-width: none; /* This will hide the scrollbar in Firefox */
+}
