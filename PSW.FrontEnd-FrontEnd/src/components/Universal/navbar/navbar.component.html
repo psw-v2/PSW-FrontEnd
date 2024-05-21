@@ -1,0 +1,38 @@
+<nav class="fixed w-full z-50 bg-indigo-950 text-slate-100">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-between">
+      <div class="flex space-x-4">
+        <a
+          href="#"
+          class="py-3 font-semibold px-3 duration-300 text-indigo-200 hover:text-slate-100"
+          >PSW Tourist agency</a
+        >
+        <!-- primary nav -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="#" class="py-3 px-3 duration-300 hover:text-indigo-400"
+            >About</a
+          >
+          <a href="#" class="py-3 px-3 duration-300 hover:text-indigo-400"
+            >Services</a
+          >
+          <a href="#" class="py-3 px-3 duration-300 hover:text-indigo-400"
+            >Contact</a
+          >
+        </div>
+      </div>
+      <!-- secondary nav -->
+      <div class="hidden md:flex items-center space-x-1">
+        <a
+          [routerLink]="['/login']"
+          class="py-3 px-3 duration-300 hover:text-indigo-400"
+          >Login</a
+        >
+        <a
+          [routerLink]="['/register']"
+          class="py-3 px-3 duration-300 hover:text-indigo-400"
+          >Sign Up</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>
