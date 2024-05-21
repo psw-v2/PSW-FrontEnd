@@ -1,81 +1,126 @@
 <div class="container m-auto flex justify-center items-center h-screen">
-  <form [formGroup]="registrationForm" (ngSubmit)="register()" class="mx-auto">
-    <div class="mb-4">
-      <label for="username" class="block text-gray-700">Username:</label>
-      <input
-        formControlName="username"
-        name="username"
-        type="text"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
-    </div>
-    <div class="mb-4">
-      <label for="password" class="block text-gray-700">Password:</label>
-      <input
-        formControlName="password"
-        type="password"
-        name="password"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
-    </div>
+  <div class="bg-violet-200 rounded p-10 w-2/5 animate-flip-up">
+    <form
+      [formGroup]="registrationForm"
+      (ngSubmit)="register()"
+      class="mx-auto"
+    >
+      <div class="mb-4">
+        <label
+          for="username"
+          class="flex justify-center text-xl mb-1 text-gray-700"
+        >
+          Username:
+        </label>
+        <input
+          formControlName="username"
+          type="text"
+          placeholder="Enter your username"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        />
+      </div>
 
-    <div class="mb-4">
-      <label for="email" class="block text-gray-700">Email:</label>
-      <input
-        formControlName="email"
-        type="email"
-        name="email"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
-    </div>
+      <div class="mb-4">
+        <label
+          for="password"
+          class="flex justify-center text-xl mb-1 text-gray-700"
+        >
+          Password:
+        </label>
+        <input
+          formControlName="password"
+          type="password"
+          placeholder="Enter your password"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        />
+      </div>
 
-    <div class="mb-4">
-      <label for="name" class="block text-gray-700">Name:</label>
-      <input
-        formControlName="name"
-        type="name"
-        name="name"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
-    </div>
+      <div class="mb-4">
+        <label
+          for="email"
+          class="flex justify-center text-xl mb-1 text-gray-700"
+        >
+          Email:
+        </label>
+        <input
+          formControlName="email"
+          type="email"
+          placeholder="Enter your email"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        />
+      </div>
 
-    <div class="mb-4">
-      <label for="surname" class="block text-gray-700">Surname:</label>
-      <input
-        formControlName="surname"
-        type="name"
-        name="surname"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
-    </div>
-    <div class="mb-4">
-      <label for="surname" class="block text-gray-700">Interest:</label>
-      <select
-        formControlName="interest"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      >
-        <option value="" disabled selected>Select your interest</option>
-        <option [value]="0">Nature</option>
-        <option [value]="1">Art</option>
-        <option [value]="2">Sport</option>
-        <option [value]="3">Shopping</option>
-        <option [value]="4">Food</option>
-      </select>
-    </div>
-    <div>
-      <button
-        type="submit"
-        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-      >
-        Register
-      </button>
-    </div>
-    <a class="cursor-pointer" (click)="navigateToLogin()"> Login</a>
-  </form>
+      <div class="mb-4">
+        <label
+          for="name"
+          class="flex justify-center text-xl mb-1 text-gray-700"
+        >
+          Name:
+        </label>
+        <input
+          formControlName="name"
+          type="text"
+          placeholder="Enter your name"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="surname"
+          class="flex justify-center text-xl mb-1 text-gray-700"
+        >
+          Surname:
+        </label>
+        <input
+          formControlName="surname"
+          type="text"
+          placeholder="Enter your surname"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="interest"
+          class="flex justify-center text-xl mb-1 text-gray-700"
+        >
+          Interest:
+        </label>
+        <select
+          formControlName="interest"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        >
+          <option value="" disabled selected>Select your interest</option>
+          <option [value]="0">Nature</option>
+          <option [value]="1">Art</option>
+          <option [value]="2">Sport</option>
+          <option [value]="3">Shopping</option>
+          <option [value]="4">Food</option>
+        </select>
+      </div>
+
+      <div class="justify-center flex mb-3">
+        <button
+          type="submit"
+          class="px-4 py-2 bg-violet-500 text-white rounded-md duration-300 hover:bg-violet-600"
+        >
+          Register
+        </button>
+      </div>
+
+      <span class="flex justify-center">
+        Already have an account? &nbsp;
+        <a class="cursor-pointer font-semibold" (click)="navigateToLogin()">
+          Login</a
+        >
+      </span>
+    </form>
+  </div>
 </div>

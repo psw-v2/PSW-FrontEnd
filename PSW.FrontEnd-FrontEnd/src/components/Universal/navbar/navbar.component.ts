@@ -26,4 +26,21 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  getRouteBasedOnRole() {
+    if (this.user) {
+      switch (this.user.role) {
+        case 'tourist':
+          return '/tourist';
+        case 'author':
+          return '/author';
+        case 'admin':
+          return '/admin';
+        default:
+          return '/';
+      }
+    } else {
+      return '/';
+    }
+  }
 }

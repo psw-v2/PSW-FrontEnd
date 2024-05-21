@@ -3,7 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Width */
+body {
+  background-color: #f0f0f0;
+}
+
+/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -23,5 +27,11 @@
   background: #555;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -9,11 +9,14 @@ import { AuthorLandingPageComponent } from '../components/Author/author-landing-
 import { AdminGuard } from '../auth/admin.guard';
 import { AuthorGuard } from '../auth/author.guard';
 import { TouristGuard } from '../auth/tourist.guard';
+import { ErrorComponent } from '../components/Universal/error/error.component';
+import { CreateTourComponent } from '../components/Author/create-tour/create-tour.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'error', component: ErrorComponent },
 
   //ADMIN
   {
@@ -25,6 +28,11 @@ const routes: Routes = [
   {
     path: 'author',
     component: AuthorLandingPageComponent,
+    canActivate: [AuthorGuard],
+  },
+  {
+    path: 'create-tour',
+    component: CreateTourComponent,
     canActivate: [AuthorGuard],
   },
   //TOURIST

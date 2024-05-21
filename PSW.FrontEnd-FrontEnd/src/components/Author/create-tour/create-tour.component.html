@@ -1,0 +1,81 @@
+<div class="flex justify-center items-center h-screen m-auto container border">
+  <div class="bg-violet-200 rounded p-10 w-2/5 animate-flip-up">
+    <form class="mx-auto" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label class="flex justify-center text-xl mb-1 text-gray-700" for="name"
+          >Name:</label
+        >
+        <input
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+          type="text"
+          [(ngModel)]="tourName"
+          name="name"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label
+          class="flex justify-center text-xl mb-1 text-gray-700"
+          for="difficulty"
+          >Difficulty:</label
+        >
+        <select
+          [(ngModel)]="tourDifficulty"
+          name="interest"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        >
+          <option value="" disabled selected>Select your interest</option>
+          <option [value]="0">Easy</option>
+          <option [value]="1">Medium</option>
+          <option [value]="2"></option>
+        </select>
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="interest"
+          class="flex justify-center text-xl mb-1 text-gray-700"
+        >
+          Interest:
+        </label>
+        <select
+          [(ngModel)]="tourInterest"
+          name="interest"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        >
+          <option value="" disabled selected>Select your interest</option>
+          <option [value]="0">Nature</option>
+          <option [value]="1">Art</option>
+          <option [value]="2">Sport</option>
+          <option [value]="3">Shopping</option>
+          <option [value]="4">Food</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label
+          class="flex justify-center text-xl mb-1 text-gray-700"
+          for="price"
+          >Price:</label
+        >
+        <input
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+          type="number"
+          id="price"
+          [(ngModel)]="tourPrice"
+          name="price"
+        />
+      </div>
+
+      <div class="justify-center flex">
+        <button
+          class="px-4 py-2 bg-violet-500 text-white rounded-md duration-300 hover:bg-violet-600 mb-3"
+          type="submit"
+        >
+          Create Tour
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

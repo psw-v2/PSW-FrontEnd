@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(login).subscribe({
         next: (response) => {
           localStorage.setItem('jwt', response.accessToken);
-          //console.log(this.authService.user$.value);
+          console.log(this.authService.user$.value);
 
           if (this.authService.user$.value.role === 'tourist') {
             this.router.navigate(['/tourist']);

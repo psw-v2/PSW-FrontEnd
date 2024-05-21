@@ -63,15 +63,25 @@ export class AuthService {
     this.setUser();
   }
 
+  // private setUser(): void {
+  //   const jwtHelperService = new JwtHelperService();
+  //   const accessToken = this.tokenStorage.getAccessToken() || '';
+  //   const user: User = {
+  //     id: +jwtHelperService.decodeToken(accessToken).id,
+  //     username: jwtHelperService.decodeToken(accessToken).username,
+  //     role: jwtHelperService.decodeToken(accessToken)[
+  //       'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+  //     ],
+  //   };
+  //   this.user$.next(user);
+  // }
   private setUser(): void {
     const jwtHelperService = new JwtHelperService();
     const accessToken = this.tokenStorage.getAccessToken() || '';
     const user: User = {
       id: +jwtHelperService.decodeToken(accessToken).id,
       username: jwtHelperService.decodeToken(accessToken).username,
-      role: jwtHelperService.decodeToken(accessToken)[
-        'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
-      ],
+      role: jwtHelperService.decodeToken(accessToken).role,
     };
     this.user$.next(user);
   }
