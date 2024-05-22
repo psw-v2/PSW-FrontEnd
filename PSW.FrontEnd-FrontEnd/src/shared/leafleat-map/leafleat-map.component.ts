@@ -9,6 +9,8 @@ import {
   Input,
 } from '@angular/core';
 import * as L from 'leaflet';
+import 'leaflet-routing-machine'; // Import the routing machine
+import { Routing } from 'leaflet';
 
 @Component({
   selector: 'app-leafleat-map',
@@ -23,6 +25,7 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
   map!: L.Map;
   markers: L.Marker[] = [];
   private polyline?: L.Polyline;
+  private routingControl?: L.Routing.Control;
 
   ngOnInit() {
     this.initMap();
@@ -95,38 +98,42 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
       shadowSize: [41, 41],
     });
 
-    // Clear existing markers and remove old polyline if exists
+    // Clear existing markers and any previous routing controls
     this.markers.forEach((marker) => marker.remove());
     this.markers = [];
-    if (this.polyline) {
-      this.polyline.remove(); // Remove existing polyline
+    if (this.routingControl) {
+      this.routingControl.removeFrom(this.map);
+      this.routingControl = undefined;
     }
 
-    const latLngs: L.LatLng[] = []; // Array to hold latitude and longitude of keypoints
+    // Initialize routing control with the waypoints from keypoints
+    this.routingControl = L.Routing.control({
+      waypoints: this.keypoints.map((kp) =>
+        L.latLng(kp.latitude, kp.longitude)
+      ),
+      routeWhileDragging: true,
+      createMarker: (i: number, waypoint: L.Routing.Waypoint, n: number) => {
+        const marker = L.marker(waypoint.latLng, {
+          icon: customIcon,
+        }).bindTooltip(this.keypoints[i].name, {
+          permanent: true,
+          direction: 'top',
+          offset: L.point(0, -40),
+        });
+        this.markers.push(marker);
+        return marker;
+      },
+    }).addTo(this.map);
 
-    // Add new markers with tooltips
-    this.keypoints.forEach((kp) => {
-      const latLng = L.latLng(kp.latitude, kp.longitude);
-      latLngs.push(latLng); // Add latLng to the array for the polyline
-
-      const marker = L.marker(latLng, {
-        icon: customIcon,
-      }).addTo(this.map);
-
-      // Add a tooltip to the marker
-      marker.bindTooltip(kp.name, {
-        permanent: true, // This makes the tooltip always visible
-        direction: 'top', // This positions the tooltip above the marker
-        offset: L.point(0, -40), // Adjusts the position of the tooltip relative to the marker
-      });
-
-      this.markers.push(marker);
+    this.routingControl.on('routesfound', (e: L.Routing.RoutingResultEvent) => {
+      var routes = e.routes;
+      var summary = routes[0].summary;
+      // Adjust map bounds or log summary here
+      this.map.fitBounds(
+        L.latLngBounds(
+          this.keypoints.map((kp) => L.latLng(kp.latitude, kp.longitude))
+        )
+      );
     });
-
-    // Create and add polyline to the map
-    this.polyline = L.polyline(latLngs, { color: 'purple' }).addTo(this.map);
-
-    // Optional: fit the map to the polyline
-    this.map.fitBounds(this.polyline.getBounds());
   }
 }

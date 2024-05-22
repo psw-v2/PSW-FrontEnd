@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~leaflet-routing-machine/dist/leaflet-routing-machine.css";
+
 body {
   background-color: #f0f0f0;
 }
