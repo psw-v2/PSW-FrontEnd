@@ -9,6 +9,7 @@ import {
   Input,
 } from '@angular/core';
 import * as L from 'leaflet';
+import 'leaflet-routing-machine';
 
 @Component({
   selector: 'app-leafleat-map',
@@ -23,6 +24,7 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
   map!: L.Map;
   markers: L.Marker[] = [];
   private polyline?: L.Polyline;
+  private control?: L.Routing.Control;
 
   ngOnInit() {
     this.initMap();
@@ -45,7 +47,7 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors',
+      attribution: 'PSW Tourist Agency',
     }).addTo(this.map);
 
     // Add click listener
@@ -123,10 +125,22 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
       this.markers.push(marker);
     });
 
-    // Create and add polyline to the map
-    this.polyline = L.polyline(latLngs, { color: 'purple' }).addTo(this.map);
+    this.control = L.Routing.control({
+      waypoints: latLngs,
+      router: L.Routing.osrmv1({
+        serviceUrl: 'https://router.project-osrm.org/route/v1',
+      }),
+      lineOptions: {
+        styles: [{ color: 'purple', opacity: 0.75, weight: 3 }],
+        extendToWaypoints: true,
+        missingRouteTolerance: 0.02,
+      },
+    }).addTo(this.map);
 
-    // Optional: fit the map to the polyline
-    this.map.fitBounds(this.polyline.getBounds());
+    this.control.on('routesfound', (e: L.Routing.RoutingResultEvent) => {
+      const route: L.LatLng[] = e.routes[0].coordinates || [];
+      const bounds = L.latLngBounds(route);
+      this.map.fitBounds(bounds);
+    });
   }
 }
