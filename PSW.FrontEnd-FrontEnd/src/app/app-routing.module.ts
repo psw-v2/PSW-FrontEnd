@@ -12,6 +12,7 @@ import { TouristGuard } from '../auth/tourist.guard';
 import { ErrorComponent } from '../components/Universal/error/error.component';
 import { CreateTourComponent } from '../components/Author/create-tour/create-tour.component';
 import { TourDetailsComponent } from '../components/Author/tour-details/tour-details.component';
+import { AddKeypointComponent } from '../components/Author/add-keypoint/add-keypoint.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'tour-details/:tourId',
     component: TourDetailsComponent,
+    canActivate: [AuthorGuard],
+  },
+  {
+    path: 'add-keypoint/:tourId',
+    component: AddKeypointComponent,
     canActivate: [AuthorGuard],
   },
   //TOURIST

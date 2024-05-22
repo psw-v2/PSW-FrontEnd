@@ -1,5 +1,3 @@
-// tour.model.ts
-
 export interface Tour {
   id: Number;
   name: string;

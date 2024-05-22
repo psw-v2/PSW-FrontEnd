@@ -20,12 +20,14 @@ export class TourService {
   }
 
   getAllForAuthor(authorId: number): Observable<any> {
-    return this.http.get(
-      `${this.baseUrl}/getAllForAuthor?authorId=${authorId}`
-    );
+    return this.http.get(`${this.baseUrl}/getAllForAuthor/${authorId}`);
   }
 
   archiveTour(tourId: number, tour: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/archive/${tourId}`, tour);
+  }
+
+  getById(tourId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${tourId}`);
   }
 }

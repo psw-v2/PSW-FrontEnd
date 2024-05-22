@@ -7,6 +7,7 @@ import { FilterPipe } from '../../shared/filter-pipe';
 import { TourDetailsComponent } from './tour-details/tour-details.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { AddKeypointComponent } from './add-keypoint/add-keypoint.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SharedModule } from '../../shared/shared.module';
     CreateTourComponent,
     FilterPipe,
     TourDetailsComponent,
+    AddKeypointComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   exports: [AuthorLandingPageComponent, CreateTourComponent],
