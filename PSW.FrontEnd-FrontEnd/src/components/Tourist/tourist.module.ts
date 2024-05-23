@@ -5,10 +5,12 @@ import { TouristLandingPageComponent } from './tourist-landing-page/tourist-land
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CartItemComponent } from './shopping-cart/cart-item/cart-item.component';
+import { BoughtToursComponent } from './bought-tours/bought-tours.component';
+import { RecommendedToursComponent } from './recommended-tours/recommended-tours.component';
+import { ChangeInterestComponent } from './change-interest/change-interest.component';
 
 @NgModule({
-  declarations: [TouristLandingPageComponent, ShoppingCartComponent, CartItemComponent],
+  declarations: [TouristLandingPageComponent, ShoppingCartComponent, BoughtToursComponent, RecommendedToursComponent, ChangeInterestComponent],
   imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   exports: [TouristLandingPageComponent],
 })

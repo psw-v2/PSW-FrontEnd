@@ -15,6 +15,9 @@ import { TourDetailsComponent } from '../components/Author/tour-details/tour-det
 import { AddKeypointComponent } from '../components/Author/add-keypoint/add-keypoint.component';
 import { AuthorTouristGuard } from '../auth/authortourist.guard';
 import { ShoppingCartComponent } from '../components/Tourist/shopping-cart/shopping-cart.component';
+import { BoughtToursComponent } from '../components/Tourist/bought-tours/bought-tours.component';
+import { RecommendedToursComponent } from '../components/Tourist/recommended-tours/recommended-tours.component';
+import { ChangeInterestComponent } from '../components/Tourist/change-interest/change-interest.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -58,6 +61,21 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent,
+    canActivate: [TouristGuard],
+  },
+  {
+    path: 'bought-tours',
+    component: BoughtToursComponent,
+    canActivate: [TouristGuard],
+  },
+  {
+    path: 'recommended-tours',
+    component: RecommendedToursComponent,
+    canActivate: [TouristGuard],
+  },
+  {
+    path: 'change-interest',
+    component: ChangeInterestComponent,
     canActivate: [TouristGuard],
   },
 ];

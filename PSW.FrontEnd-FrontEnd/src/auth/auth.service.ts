@@ -88,7 +88,14 @@ export class AuthService {
 
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(
-      'https://localhost:44333/api/users//GetById/' + id
+      'https://localhost:44333/api/users/GetById/' + id
+    );
+  }
+
+  changeInterest(userId: number, interest: number): Observable<any> {
+    return this.http.put(
+      `https://localhost:44333/api/users/ChangeInterest/${userId}/${interest}`,
+      {}
     );
   }
 

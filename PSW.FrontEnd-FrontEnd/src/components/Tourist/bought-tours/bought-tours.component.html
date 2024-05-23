@@ -1,0 +1,72 @@
+<div
+  class="flex justify-center items-center h-screen m-auto container animate-flip-down"
+  [ngClass]="{ 'pt-32': tours.length > 6 }"
+  [ngClass]="{ 'pt-52': tours.length > 9 }"
+>
+  <div
+    class="flex flex-col justify-center items-center h-screen m-auto container"
+  >
+    <div class="mb-16">
+      <h1 class="text-gray-700 text-3xl font-bold mb-2" for="filter">
+        Bought tours
+      </h1>
+    </div>
+
+    <div class="grid grid-cols-3 gap-16">
+      <div *ngFor="let tour of tours">
+        <div
+          class="w-64 h-56 overflow-hidden rounded-lg bg-violet-100 border border-violet-300 bg-opacity-55 shadow-sm duration-300 hover:scale-105"
+        >
+          <h1 class="mt-2 text-xl font-semibold flex justify-center">
+            {{ tour.name }}
+          </h1>
+          <p class="mt-2 flex justify-center text-lg">{{ tour.price }}$</p>
+          <p class="mt-2 flex justify-center text-lg">
+            <ng-container *ngIf="tour.difficulty === 0; else notEasy"
+              >Easy</ng-container
+            >
+            <ng-template #notEasy>
+              <ng-container *ngIf="tour.difficulty === 1; else notMedium"
+                >Medium</ng-container
+              >
+              <ng-template #notMedium>
+                <ng-container *ngIf="tour.difficulty === 2; else notHard"
+                  >Hard</ng-container
+                >
+                <ng-template #notHard>
+                  <!-- You can put some default text here if tour.difficulty is not 0, 1, or 2 -->
+                </ng-template>
+              </ng-template>
+            </ng-template>
+          </p>
+          <p class="mt-2 flex justify-center text-lg">
+            <ng-container *ngIf="tour.status === 0; else notDraft"
+              >Draft</ng-container
+            >
+            <ng-template #notDraft>
+              <ng-container *ngIf="tour.status === 1; else notPublished"
+                >Published</ng-container
+              >
+              <ng-template #notPublished>
+                <ng-container *ngIf="tour.status === 2; else notArchived"
+                  >Archived</ng-container
+                >
+                <ng-template #notArchived>
+                  <!-- You can put some default text here if tour.status is not 0, 1, or 2 -->
+                </ng-template>
+              </ng-template>
+            </ng-template>
+          </p>
+          <div class="mt-5 flex justify-center">
+            <button
+              [routerLink]="'/tour-details/' + tour.id"
+              class="uppercase py-3 px-1.5 mr-2 font-semibold text-violet-900 bg-violet-300 p-0 rounded duration-300 hover:bg-violet-400"
+            >
+              View details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

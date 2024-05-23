@@ -9,7 +9,7 @@
         >
         <!-- primary nav -->
         <div class="hidden md:flex items-center space-x-1">
-          <a
+          <!-- <a
             *ngIf="user && user.username == ''"
             href="#"
             class="py-3 px-3 duration-300 hover:text-indigo-400"
@@ -26,9 +26,10 @@
             href="#"
             class="py-3 px-3 duration-300 hover:text-indigo-400"
             >Contact</a
-          >
+          > -->
           <!-- AUTHOR -->
           <a
+            class="py-3 px-2 duration-300 hover:text-indigo-400"
             [routerLink]="['/create-tour']"
             *ngIf="user && user.role == 'author'"
             >Create tour</a
@@ -36,6 +37,28 @@
 
           <!-- TOURIST -->
           <a
+            [routerLink]="['/recommended-tours']"
+            class="py-3 px-2 duration-300 hover:text-indigo-400"
+            *ngIf="user && user.role == 'tourist'"
+            >Recommended tours</a
+          >
+
+          <a
+            [routerLink]="['/bought-tours']"
+            class="py-3 px-2 duration-300 hover:text-indigo-400"
+            *ngIf="user && user.role == 'tourist'"
+            >Bought tours</a
+          >
+
+          <a
+            [routerLink]="['/change-interest']"
+            class="py-3 px-2 duration-300 hover:text-indigo-400"
+            *ngIf="user && user.role == 'tourist'"
+            >Change interest</a
+          >
+
+          <a
+            class="py-3 px-2 duration-300 hover:text-indigo-400"
             [routerLink]="['/shopping-cart']"
             *ngIf="user && user.role == 'tourist'"
             ><i class="fa-solid fa-cart-shopping"></i> Shopping cart</a
@@ -47,13 +70,13 @@
         <a
           *ngIf="user && user.username === ''"
           [routerLink]="['/login']"
-          class="py-3 px-3 duration-300 hover:text-indigo-400"
+          class="py-3 px-2 duration-300 hover:text-indigo-400"
           >Login</a
         >
         <a
           *ngIf="user && user.username === ''"
           [routerLink]="['/register']"
-          class="py-3 px-3 duration-300 hover:text-indigo-400"
+          class="py-3 px-2 duration-300 hover:text-indigo-400"
           >Sign Up</a
         >
         <a

@@ -30,7 +30,7 @@
             </ng-template>
           </p>
 
-          <p class="text-gray-600">{{ item.price | currency }}</p>
+          <p class="text-gray-600">${{ item.price }}</p>
         </div>
         <div>
           <button
@@ -44,7 +44,7 @@
     </div>
     <div class="mt-10">
       <p *ngIf="tours.length > 0" class="text-lg font-semibold">
-        Total: {{ totalPrice | currency }}
+        Total: ${{ totalPrice }}
       </p>
       <button
         *ngIf="tours.length > 0"
