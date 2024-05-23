@@ -8,9 +8,10 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { BoughtToursComponent } from './bought-tours/bought-tours.component';
 import { RecommendedToursComponent } from './recommended-tours/recommended-tours.component';
 import { ChangeInterestComponent } from './change-interest/change-interest.component';
+import { AskRecommendedComponent } from './ask-recommended/ask-recommended.component';
 
 @NgModule({
-  declarations: [TouristLandingPageComponent, ShoppingCartComponent, BoughtToursComponent, RecommendedToursComponent, ChangeInterestComponent],
+  declarations: [TouristLandingPageComponent, ShoppingCartComponent, BoughtToursComponent, RecommendedToursComponent, ChangeInterestComponent, AskRecommendedComponent],
   imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   exports: [TouristLandingPageComponent],
 })

@@ -6,6 +6,7 @@ import { User } from '../../../auth/model/user.model';
 import { ShoppingCartService } from '../../../services/shopping-cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BoughtTourService } from '../../../services/bought-tour.service';
+import { TourRecommendationService } from '../../../services/tour-recommendation.service';
 @Component({
   selector: 'app-recommended-tours',
   templateUrl: './recommended-tours.component.html',
@@ -23,7 +24,8 @@ export class RecommendedToursComponent {
     private shoppingCartService: ShoppingCartService,
     private tourService: TourService,
     private snackBar: MatSnackBar,
-    private boughtTourService: BoughtTourService
+    private boughtTourService: BoughtTourService,
+    private trService: TourRecommendationService
   ) {}
 
   ngOnInit(): void {
@@ -32,11 +34,13 @@ export class RecommendedToursComponent {
     });
     this.userId = this.authService.user$.getValue().id;
 
-    // this.tourService.getForUserPurchase(this.userId).subscribe((tours) => {
-    //   this.tours = tours;
-    // });
-    this.boughtTourService
-      .getAllBoughtToursForUser(this.userId)
+    // this.boughtTourService
+    //   .getAllBoughtToursForUser(this.userId)
+    //   .subscribe((tours) => {
+    //     this.tours = tours;
+    //   });
+    this.trService
+      .getAllTourRecommendationsForUser(this.userId)
       .subscribe((tours) => {
         this.tours = tours;
       });

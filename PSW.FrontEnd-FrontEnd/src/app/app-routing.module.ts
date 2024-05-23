@@ -18,6 +18,7 @@ import { ShoppingCartComponent } from '../components/Tourist/shopping-cart/shopp
 import { BoughtToursComponent } from '../components/Tourist/bought-tours/bought-tours.component';
 import { RecommendedToursComponent } from '../components/Tourist/recommended-tours/recommended-tours.component';
 import { ChangeInterestComponent } from '../components/Tourist/change-interest/change-interest.component';
+import { AskRecommendedComponent } from '../components/Tourist/ask-recommended/ask-recommended.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -76,6 +77,11 @@ const routes: Routes = [
   {
     path: 'change-interest',
     component: ChangeInterestComponent,
+    canActivate: [TouristGuard],
+  },
+  {
+    path: 'ask-recommended',
+    component: AskRecommendedComponent,
     canActivate: [TouristGuard],
   },
 ];

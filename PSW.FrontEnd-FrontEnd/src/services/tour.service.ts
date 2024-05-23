@@ -38,4 +38,10 @@ export class TourService {
   getForUserPurchase(userId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/GetForUserPurchase/${userId}`);
   }
+
+  getRecommendations(userId: number, difficulty: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/GetRecommendations/${userId}/${difficulty}`
+    );
+  }
 }
