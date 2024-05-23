@@ -13,6 +13,8 @@ import { ErrorComponent } from '../components/Universal/error/error.component';
 import { CreateTourComponent } from '../components/Author/create-tour/create-tour.component';
 import { TourDetailsComponent } from '../components/Author/tour-details/tour-details.component';
 import { AddKeypointComponent } from '../components/Author/add-keypoint/add-keypoint.component';
+import { AuthorTouristGuard } from '../auth/authortourist.guard';
+import { ShoppingCartComponent } from '../components/Tourist/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -40,7 +42,7 @@ const routes: Routes = [
   {
     path: 'tour-details/:tourId',
     component: TourDetailsComponent,
-    canActivate: [AuthorGuard],
+    canActivate: [AuthorTouristGuard],
   },
   {
     path: 'add-keypoint/:tourId',
@@ -51,6 +53,11 @@ const routes: Routes = [
   {
     path: 'tourist',
     component: TouristLandingPageComponent,
+    canActivate: [TouristGuard],
+  },
+  {
+    path: 'shopping-cart',
+    component: ShoppingCartComponent,
     canActivate: [TouristGuard],
   },
 ];

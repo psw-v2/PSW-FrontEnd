@@ -1,0 +1,58 @@
+<div
+  class="flex justify-center items-center h-screen m-auto container animate-flip-down text-center"
+>
+  <div class="container mx-auto p-6 bg-white shadow-md rounded-md">
+    <h2 class="text-xl font-semibold mb-5">Your Tour Cart</h2>
+    <div *ngIf="tours.length === 0">
+      <p class="text-lg">Your cart is empty</p>
+    </div>
+    <div *ngFor="let item of tours" class="mb-4">
+      <div class="flex justify-between items-center border-b pb-2 ml-48 mr-48">
+        <div>
+          <h3 class="text-lg font-bold">{{ item.name }}</h3>
+
+          <p class="mt-2 flex justify-center text-lg">
+            <ng-container *ngIf="item.difficulty === 0; else notEasy"
+              >Easy</ng-container
+            >
+            <ng-template #notEasy>
+              <ng-container *ngIf="item.difficulty === 1; else notMedium"
+                >Medium</ng-container
+              >
+              <ng-template #notMedium>
+                <ng-container *ngIf="item.difficulty === 2; else notHard"
+                  >Hard</ng-container
+                >
+                <ng-template #notHard>
+                  <!-- You can put some default text here if item.difficulty is not 0, 1, or 2 -->
+                </ng-template>
+              </ng-template>
+            </ng-template>
+          </p>
+
+          <p class="text-gray-600">{{ item.price | currency }}</p>
+        </div>
+        <div>
+          <button
+            class="bg-violet-900 duration-300 hover:bg-violet-950 text-white font-bold py-2 px-4 rounded"
+            (click)="removeTour(item.id)"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10">
+      <p *ngIf="tours.length > 0" class="text-lg font-semibold">
+        Total: {{ totalPrice | currency }}
+      </p>
+      <button
+        *ngIf="tours.length > 0"
+        (click)="checkout()"
+        class="bg-violet-500 duration-300 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Checkout
+      </button>
+    </div>
+  </div>
+</div>

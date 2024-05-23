@@ -27,11 +27,18 @@
             class="py-3 px-3 duration-300 hover:text-indigo-400"
             >Contact</a
           >
-
+          <!-- AUTHOR -->
           <a
             [routerLink]="['/create-tour']"
             *ngIf="user && user.role == 'author'"
             >Create tour</a
+          >
+
+          <!-- TOURIST -->
+          <a
+            [routerLink]="['/shopping-cart']"
+            *ngIf="user && user.role == 'tourist'"
+            ><i class="fa-solid fa-cart-shopping"></i> Shopping cart</a
           >
         </div>
       </div>

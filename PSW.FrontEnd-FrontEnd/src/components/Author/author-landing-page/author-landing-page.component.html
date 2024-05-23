@@ -1,5 +1,7 @@
 <div
-  class="pt-64 flex justify-center items-center h-screen m-auto container animate-flip-down"
+  class="flex justify-center items-center h-screen m-auto container animate-flip-down"
+  [ngClass]="{ 'pt-32': tours.length > 6 }"
+  [ngClass]="{ 'pt-52': tours.length > 9 }"
 >
   <div
     class="flex flex-col justify-center items-center h-screen m-auto container"

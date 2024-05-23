@@ -23,11 +23,19 @@ export class TourService {
     return this.http.get(`${this.baseUrl}/getAllForAuthor/${authorId}`);
   }
 
-  archiveTour(tourId: number, tour: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/archive/${tourId}`, tour);
+  archiveTour(tourId: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/archive/${tourId}`, {});
+  }
+
+  publishTour(tourId: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/publish/${tourId}`, {});
   }
 
   getById(tourId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${tourId}`);
+  }
+
+  getForUserPurchase(userId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/GetForUserPurchase/${userId}`);
   }
 }

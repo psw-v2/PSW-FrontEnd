@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TourService } from '../../../services/tour.service';
 import { KeyPointService } from '../../../services/keypoint.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-tour-details',
@@ -12,9 +13,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class TourDetailsComponent implements OnInit {
   tourId: number = 0;
   keypoints: any[] = [];
+  user: any;
 
   constructor(
     private router: Router,
+    private authService: AuthService,
     private tourService: TourService,
     private keypointService: KeyPointService,
     private route: ActivatedRoute,
@@ -22,6 +25,10 @@ export class TourDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.authService.user$.subscribe((user) => {
+      this.user = user;
+    });
+
     this.tourId = this.route.snapshot.params['tourId'];
 
     this.keypointService.getAllKeyPointsForTour(this.tourId).subscribe(
@@ -47,14 +54,30 @@ export class TourDetailsComponent implements OnInit {
       return;
     }
 
-    this.snackBar.open('Tour published successfully', 'Close', {
-      duration: 2000,
+    this.tourService.publishTour(this.tourId).subscribe({
+      next: (response) => {
+        this.snackBar.open('Tour published successfully', 'Close', {
+          duration: 2000,
+        });
+        this.router.navigate(['/author']);
+      },
+      error: (error) => {
+        console.log('Error in publishing tour: ' + error);
+      },
     });
   }
 
   archiveTour() {
-    this.snackBar.open('Tour archived successfully', 'Close', {
-      duration: 2000,
+    this.tourService.archiveTour(this.tourId).subscribe({
+      next: (response) => {
+        this.snackBar.open('Tour archived successfully', 'Close', {
+          duration: 2000,
+        });
+        this.router.navigate(['/author']);
+      },
+      error: (error) => {
+        console.log('Error in publishing tour: ' + error);
+      },
     });
   }
 }
