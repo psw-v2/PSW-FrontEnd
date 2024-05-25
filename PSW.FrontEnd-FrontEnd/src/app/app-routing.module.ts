@@ -23,6 +23,7 @@ import { ReportsOverviewComponent } from '../components/Author/reports-overview/
 import { RecommendedArchiveComponent } from '../components/Author/recommended-archive/recommended-archive.component';
 import { ReportProblemComponent } from '../components/Tourist/report-problem/report-problem.component';
 import { ProblemsOverviewComponent } from '../components/Author/problems-overview/problems-overview.component';
+import { AdminManageProblemsComponent } from '../components/Admin/admin-manage-problems/admin-manage-problems.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminLandingPageComponent,
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'admin-manage-problems',
+    component: AdminManageProblemsComponent,
     canActivate: [AdminGuard],
   },
   //AUTHOR

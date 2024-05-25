@@ -26,7 +26,7 @@ export class ProblemsOverviewComponent implements OnInit {
     });
     this.userId = this.authService.user$.getValue().id;
 
-    this.problemService.getAllByTourAuthorId(this.userId).subscribe({
+    this.problemService.getAllByTourAuthorIdOnWait(this.userId).subscribe({
       next: (problems) => {
         this.problems = problems;
         console.log(problems);
