@@ -19,6 +19,7 @@ import { BoughtToursComponent } from '../components/Tourist/bought-tours/bought-
 import { RecommendedToursComponent } from '../components/Tourist/recommended-tours/recommended-tours.component';
 import { ChangeInterestComponent } from '../components/Tourist/change-interest/change-interest.component';
 import { AskRecommendedComponent } from '../components/Tourist/ask-recommended/ask-recommended.component';
+import { ReportsOverviewComponent } from '../components/Author/reports-overview/reports-overview.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -51,6 +52,11 @@ const routes: Routes = [
   {
     path: 'add-keypoint/:tourId',
     component: AddKeypointComponent,
+    canActivate: [AuthorGuard],
+  },
+  {
+    path: 'reports-overview',
+    component: ReportsOverviewComponent,
     canActivate: [AuthorGuard],
   },
   //TOURIST

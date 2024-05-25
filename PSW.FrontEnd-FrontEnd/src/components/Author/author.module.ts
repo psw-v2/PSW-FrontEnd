@@ -8,6 +8,7 @@ import { TourDetailsComponent } from './tour-details/tour-details.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { AddKeypointComponent } from './add-keypoint/add-keypoint.component';
+import { ReportsOverviewComponent } from './reports-overview/reports-overview.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AddKeypointComponent } from './add-keypoint/add-keypoint.component';
     FilterPipe,
     TourDetailsComponent,
     AddKeypointComponent,
+    ReportsOverviewComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   exports: [AuthorLandingPageComponent, CreateTourComponent],
