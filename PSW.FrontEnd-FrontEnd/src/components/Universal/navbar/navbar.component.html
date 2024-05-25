@@ -92,6 +92,12 @@
             *ngIf="user && user.role == 'tourist'"
             >Change interest</a
           >
+          <a
+            [routerLink]="['/report-problem']"
+            class="py-3 px-2 duration-300 hover:text-indigo-400"
+            *ngIf="user && user.role == 'tourist'"
+            >Report problem</a
+          >
         </div>
       </div>
       <!-- secondary nav -->

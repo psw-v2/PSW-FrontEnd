@@ -1,0 +1,71 @@
+<div class="flex justify-center items-center h-screen m-auto container">
+  <!-- Conditionally render the form or the message based on boughtTours.length -->
+  <div
+    *ngIf="boughtTours.length > 0; else noTours"
+    class="bg-violet-200 rounded p-10 w-2/5 animate-flip-down"
+  >
+    <form class="mx-auto" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label class="flex justify-center text-xl mb-1 text-gray-700" for="name"
+          >Name:</label
+        >
+        <input
+          [(ngModel)]="problemName"
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+          type="text"
+          name="name"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="flex justify-center text-xl mb-1 text-gray-700" for="name"
+          >Description:</label
+        >
+        <textarea
+          [(ngModel)]="problemDescription"
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+          name="description"
+          rows="4"
+          style="resize: none"
+        ></textarea>
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="interest"
+          class="flex justify-center text-xl mb-1 text-gray-700"
+          >Tour:</label
+        >
+        <select
+          [(ngModel)]="problemTourId"
+          name="interest"
+          required
+          class="text-center w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-violet-500"
+        >
+          <option value="" disabled selected>Select your interest</option>
+          <option *ngFor="let tour of boughtTours" [value]="tour.id">
+            {{ tour.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="justify-center flex">
+        <button
+          class="px-4 py-2 bg-violet-500 text-white rounded-md duration-300 hover:bg-violet-600 mb-3"
+          type="submit"
+        >
+          Report problem
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Alternative content when no bought tours are available -->
+  <ng-template #noTours>
+    <div class="bg-violet-200 rounded p-10 w-2/5 text-center">
+      <p class="text-gray-700 text-xl">
+        You cannot report a problem because you haven't bought any tours.
+      </p>
+    </div>
+  </ng-template>
+</div>

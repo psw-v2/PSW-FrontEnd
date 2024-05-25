@@ -21,6 +21,7 @@ import { ChangeInterestComponent } from '../components/Tourist/change-interest/c
 import { AskRecommendedComponent } from '../components/Tourist/ask-recommended/ask-recommended.component';
 import { ReportsOverviewComponent } from '../components/Author/reports-overview/reports-overview.component';
 import { RecommendedArchiveComponent } from '../components/Author/recommended-archive/recommended-archive.component';
+import { ReportProblemComponent } from '../components/Tourist/report-problem/report-problem.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -94,6 +95,11 @@ const routes: Routes = [
   {
     path: 'ask-recommended',
     component: AskRecommendedComponent,
+    canActivate: [TouristGuard],
+  },
+  {
+    path: 'report-problem',
+    component: ReportProblemComponent,
     canActivate: [TouristGuard],
   },
 ];
