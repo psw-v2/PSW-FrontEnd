@@ -6,6 +6,7 @@ import { User } from '../../../auth/model/user.model';
 import { ShoppingCartService } from '../../../services/shopping-cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TourRecommendationService } from '../../../services/tour-recommendation.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tourist-landing-page',
@@ -22,7 +23,7 @@ export class TouristLandingPageComponent implements OnInit {
 
   constructor(
     private router: Router,
-
+    private toastr: ToastrService,
     private rtService: TourRecommendationService,
     private authService: AuthService,
     private shoppingCartService: ShoppingCartService,
@@ -44,15 +45,19 @@ export class TouristLandingPageComponent implements OnInit {
       next: (count) => {
         this.count = count;
         if (count > 0) {
-          this.snackBar.open(
-            ` You have ${count} tour recommendations`,
-            'Close',
-            {
-              duration: 2000,
-              verticalPosition: 'top',
-              horizontalPosition: 'right',
-            }
+          this.toastr.info(
+            'You have ${count} tour recommendations',
+            'New Recommendations'
           );
+          // this.snackBar.open(
+          //   ` You have ${count} tour recommendations`,
+          //   'Close',
+          //   {
+          //     duration: 2000,
+          //     verticalPosition: 'top',
+          //     horizontalPosition: 'right',
+          //   }
+          // );
         }
       },
       error: (error) => {

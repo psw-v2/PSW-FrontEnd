@@ -13,6 +13,7 @@ import { AuthModule } from '../auth/auth.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TouristModule,
     UniversalModule,
     AuthModule,
+    ToastrModule.forRoot(),
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

@@ -4,6 +4,8 @@ import { AuthService } from '../../../auth/auth.service';
 import { User } from '../../../auth/model/user.model';
 import { TourService } from '../../../services/tour.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProblemService } from '../../../services/problem.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-author-landing-page',
@@ -16,12 +18,15 @@ export class AuthorLandingPageComponent implements OnInit {
   tours: any[] = [];
   filterStatus: string = '';
   count = 0;
+  problemsCount = 0;
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private tourService: TourService,
-    private snackBar: MatSnackBar
+    private problemService: ProblemService,
+    private snackBar: MatSnackBar,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -38,19 +43,29 @@ export class AuthorLandingPageComponent implements OnInit {
       next: (count) => {
         this.count = count;
         if (count > 0) {
-          this.snackBar.open(
-            ` You have ${count} tour recommendations`,
-            'Close',
-            {
-              duration: 2000,
-              verticalPosition: 'top',
-              horizontalPosition: 'right',
-            }
+          this.toastr.info(
+            ` You have ${count} tour recommendations for archive`,
+            'New Recommendations '
           );
         }
       },
       error: (error) => {
         console.error('Error getting count of tour recommendations:', error);
+      },
+    });
+
+    this.problemService.getCountForTourAuthor(this.userId).subscribe({
+      next: (count) => {
+        this.problemsCount = count;
+        if (count > 0) {
+          this.toastr.info(
+            ` You have ${count} problems reported`,
+            'New Problems'
+          );
+        }
+      },
+      error: (error) => {
+        console.error('Error getting count of problems:', error);
       },
     });
   }

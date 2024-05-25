@@ -10,6 +10,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { AddKeypointComponent } from './add-keypoint/add-keypoint.component';
 import { ReportsOverviewComponent } from './reports-overview/reports-overview.component';
 import { RecommendedArchiveComponent } from './recommended-archive/recommended-archive.component';
+import { ProblemsOverviewComponent } from './problems-overview/problems-overview.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { RecommendedArchiveComponent } from './recommended-archive/recommended-a
     AddKeypointComponent,
     ReportsOverviewComponent,
     RecommendedArchiveComponent,
+    ProblemsOverviewComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   exports: [AuthorLandingPageComponent, CreateTourComponent],

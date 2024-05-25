@@ -86,5 +86,19 @@ export class ProblemService {
       );
   }
 
-  // You can continue implementing more methods based on your requirements
+  getAllByTourAuthorId(tourAuthorId: number): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.apiUrl}/GetAllByTourAuthorId/${tourAuthorId}`
+    );
+  }
+
+  getCountForTourAuthor(tourAuthorId: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/count-for-tourAuthor/${tourAuthorId}`
+    );
+  }
+
+  setAllToSeen(tourAuthorId: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/SetAllToSeen/${tourAuthorId}`, {});
+  }
 }

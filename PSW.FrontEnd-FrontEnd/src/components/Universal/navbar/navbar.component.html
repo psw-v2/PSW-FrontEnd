@@ -46,6 +46,12 @@
             *ngIf="user && user.role == 'author'"
             >Recommended to archive</a
           >
+          <a
+            class="py-3 px-2 duration-300 hover:text-indigo-400"
+            [routerLink]="['/problems-overview']"
+            *ngIf="user && user.role == 'author'"
+            >Problems overview</a
+          >
 
           <!-- TOURIST -->
 
