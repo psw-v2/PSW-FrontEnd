@@ -99,6 +99,12 @@ export class AuthService {
     );
   }
 
+  isAuthorAwarded(userId: number): Observable<any> {
+    return this.http.get(
+      `https://localhost:44333/api/users/isAuthorAwarded/${userId}`
+    );
+  }
+
   public decodeToken(token: string): any {
     const parts = token.split('.');
     if (parts.length !== 3) {

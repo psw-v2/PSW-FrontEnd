@@ -18,6 +18,7 @@ export class TouristLandingPageComponent implements OnInit {
   tours: any[] = [];
   filterStatus: string = '';
   count = 0;
+  showAwarded = false;
 
   constructor(
     private router: Router,

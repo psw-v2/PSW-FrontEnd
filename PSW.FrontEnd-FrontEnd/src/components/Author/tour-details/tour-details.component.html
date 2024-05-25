@@ -37,7 +37,7 @@
 
       <button
         *ngIf="user.role === 'author'"
-        [routerLink]="'/add-keypoint/' + tourId"
+        (click)="addKeypoint()"
         class="p-2 mb-2 rounded border-0 bg-violet-500 mt-2 font-medium text-white duration-300 hover:bg-violet-400 hover:text-black"
       >
         Add Checkpoint

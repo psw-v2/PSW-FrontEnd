@@ -34,7 +34,6 @@ export class TourDetailsComponent implements OnInit {
     this.keypointService.getAllKeyPointsForTour(this.tourId).subscribe(
       (keyPoints) => {
         this.keypoints = keyPoints;
-        console.log('Key points: ' + JSON.stringify(this.keypoints));
       },
       (error) => {
         console.log('Error in fetching key points: ' + error);
@@ -79,5 +78,9 @@ export class TourDetailsComponent implements OnInit {
         console.log('Error in publishing tour: ' + error);
       },
     });
+  }
+
+  addKeypoint() {
+    this.router.navigate(['/add-keypoint', this.tourId]);
   }
 }
