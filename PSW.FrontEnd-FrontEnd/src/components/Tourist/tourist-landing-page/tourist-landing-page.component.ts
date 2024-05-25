@@ -18,7 +18,7 @@ export class TouristLandingPageComponent implements OnInit {
   tours: any[] = [];
   filterStatus: string = '';
   count = 0;
-  showAwarded = false;
+  isAwarded = false;
 
   constructor(
     private router: Router,
@@ -81,5 +81,23 @@ export class TouristLandingPageComponent implements OnInit {
         console.error('Error adding tour to cart:', error);
       }
     );
+  }
+
+  toggleSlider() {
+    this.isAwarded = !this.isAwarded;
+
+    //FALSE = ALL , TRUE = AWARDED
+    console.log(this.tours);
+    if (this.isAwarded == true) {
+      this.tours.forEach((tour) => {
+        if (this.authService.isAuthorAwarded(tour.authorId)) {
+          this.tours = this.tours.filter((tour) => tour.authorId !== 1);
+        }
+      });
+    } else {
+      this.tourService.getForUserPurchase(this.userId).subscribe((tours) => {
+        this.tours = tours;
+      });
+    }
   }
 }
