@@ -20,6 +20,7 @@ import { RecommendedToursComponent } from '../components/Tourist/recommended-tou
 import { ChangeInterestComponent } from '../components/Tourist/change-interest/change-interest.component';
 import { AskRecommendedComponent } from '../components/Tourist/ask-recommended/ask-recommended.component';
 import { ReportsOverviewComponent } from '../components/Author/reports-overview/reports-overview.component';
+import { RecommendedArchiveComponent } from '../components/Author/recommended-archive/recommended-archive.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -57,6 +58,11 @@ const routes: Routes = [
   {
     path: 'reports-overview',
     component: ReportsOverviewComponent,
+    canActivate: [AuthorGuard],
+  },
+  {
+    path: 'recommended-archive',
+    component: RecommendedArchiveComponent,
     canActivate: [AuthorGuard],
   },
   //TOURIST

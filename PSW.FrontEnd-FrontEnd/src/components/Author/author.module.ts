@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { AddKeypointComponent } from './add-keypoint/add-keypoint.component';
 import { ReportsOverviewComponent } from './reports-overview/reports-overview.component';
+import { RecommendedArchiveComponent } from './recommended-archive/recommended-archive.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ReportsOverviewComponent } from './reports-overview/reports-overview.co
     TourDetailsComponent,
     AddKeypointComponent,
     ReportsOverviewComponent,
+    RecommendedArchiveComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   exports: [AuthorLandingPageComponent, CreateTourComponent],

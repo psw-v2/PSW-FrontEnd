@@ -1,7 +1,11 @@
 <div class="flex justify-center items-center h-screen">
   <div class="container m-auto animate-flip-down">
+    <div *ngIf="reports.length === 0" class="text-center p-4">
+      <p class="text-xl text-gray-800">You don't have any reports.</p>
+    </div>
     <table
-      class="table-fixed w-8/12 m-auto max-h-3/4 overflow-auto rounded-lg shadow-lg"
+      *ngIf="reports.length > 0"
+      class="table-fixed w-full max-h-3/4 overflow-auto rounded-lg shadow-lg"
     >
       <thead class="bg-violet-500 text-white">
         <tr>

@@ -44,4 +44,16 @@ export class TourService {
       `${this.baseUrl}/GetRecommendations/${userId}/${difficulty}`
     );
   }
+
+  getRecommendatonsForArchive(userId: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/getRecommendatonsForArchive/${userId}`
+    );
+  }
+
+  getCountRecommendatonsForArchive(userId: number): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/getCountRecommendatonsForArchive/${userId}`
+    );
+  }
 }
