@@ -106,12 +106,36 @@
             *ngIf="user && user.role == 'tourist'"
             >Change interest</a
           >
-          <a
-            [routerLink]="['/report-problem']"
-            class="py-3 px-2 duration-300 hover:text-indigo-400"
-            *ngIf="user && user.role == 'tourist'"
-            >Report problem</a
-          >
+
+          <div *ngIf="user && user.role === 'tourist'" class="relative">
+            <button
+              class="custom-color px-3"
+              (mouseenter)="openDropdown('problem')"
+              (mouseleave)="startChecking('problem')"
+            >
+              Problems
+            </button>
+            <div
+              *ngIf="dropdowns['problem']"
+              class="absolute top-6 z-10 w-48 bg-black bg-opacity-70 shadow-lg rounded-md"
+              (mouseenter)="stopChecking()"
+              (mouseleave)="closeDropdown('problem')"
+              @dropdown
+            >
+              <a
+                [routerLink]="['/report-problem']"
+                class="block px-4 py-2 text-sm duration-300 hover:text-indigo-400"
+                *ngIf="user && user.role == 'tourist'"
+                >Report problem</a
+              >
+              <a
+                [routerLink]="['/tourist-problems-overview']"
+                class="block px-4 py-2 text-sm duration-300 hover:text-indigo-400"
+                *ngIf="user && user.role == 'tourist'"
+                >Problems overview</a
+              >
+            </div>
+          </div>
         </div>
       </div>
       <!-- secondary nav -->

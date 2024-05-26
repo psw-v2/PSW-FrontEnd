@@ -1,3 +1,73 @@
-<div class="flex justify-center items-center h-screen">
-  <h1 class="text-7xl uppercase text-indigo-950 font-bold">MANAGE</h1>
+<div
+  class="flex justify-center items-center h-screen m-auto container animate-flip-down"
+  [ngClass]="{ 'pt-32': problems.length > 6, 'pt-52': problems.length > 9 }"
+>
+  <div
+    class="flex flex-col justify-center items-center h-screen m-auto container"
+  >
+    <!-- Check if there are any problems -->
+    <div *ngIf="problems.length > 0; else noProblems">
+      <div class="grid grid-cols-3 gap-32">
+        <div *ngFor="let problem of problems">
+          <div
+            class="w-96 h-56 overflow-hidden rounded-lg bg-violet-100 border border-violet-300 bg-opacity-55 shadow-sm duration-300 hover:scale-105"
+          >
+            <h1 class="mt-2 text-xl font-semibold flex justify-center">
+              {{ problem.name }}
+            </h1>
+            <p class="mt-2 flex justify-center text-lg">
+              {{ problem.description }}
+            </p>
+            <p class="mt-2 flex justify-center text-lg">
+              <ng-container *ngIf="problem.status === 0; else notDraft"
+                >On wait</ng-container
+              >
+              <ng-template #notDraft>
+                <ng-container *ngIf="problem.status === 1; else notPublished"
+                  >Solved</ng-container
+                >
+                <ng-template #notPublished>
+                  <ng-container *ngIf="problem.status === 2; else notRevisioned"
+                    >On revision</ng-container
+                  >
+                  <ng-template #notRevisioned>
+                    <ng-container *ngIf="problem.status === 2; else notArchived"
+                      >Discarded</ng-container
+                    >
+                    <ng-template #notArchived>
+                      <!-- You can put some default text here if problem.status is not 0, 1, or 2 -->
+                    </ng-template>
+                  </ng-template>
+                </ng-template>
+              </ng-template>
+            </p>
+            <div class="mt-10 mb-0 flex justify-center">
+              <button
+                [disabled]="problem.status != 2"
+                (click)="declineProblem(problem.id)"
+                class="px-6 py-3 uppercase font-semibold text-violet-900 bg-violet-300 p-2 rounded duration-300 hover:bg-violet-400"
+              >
+                Decline
+              </button>
+              <button
+                [disabled]="problem.status != 2"
+                (click)="setOnWait(problem.id)"
+                class="ml-2 px-6 py-3 uppercase font-semibold text-violet-900 bg-violet-300 p-2 rounded duration-300 hover:bg-violet-400"
+              >
+                Send to author
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Template for no problems available -->
+    <ng-template #noProblems>
+      <div class="text-center">
+        <h2 class="text-3xl text-gray-800">
+          No problems reported at this time.
+        </h2>
+      </div>
+    </ng-template>
+  </div>
 </div>

@@ -10,9 +10,10 @@ import { RecommendedToursComponent } from './recommended-tours/recommended-tours
 import { ChangeInterestComponent } from './change-interest/change-interest.component';
 import { AskRecommendedComponent } from './ask-recommended/ask-recommended.component';
 import { ReportProblemComponent } from './report-problem/report-problem.component';
+import { TouristProblemsOverviewComponent } from './tourist-problems-overview/tourist-problems-overview.component';
 
 @NgModule({
-  declarations: [TouristLandingPageComponent, ShoppingCartComponent, BoughtToursComponent, RecommendedToursComponent, ChangeInterestComponent, AskRecommendedComponent, ReportProblemComponent],
+  declarations: [TouristLandingPageComponent, ShoppingCartComponent, BoughtToursComponent, RecommendedToursComponent, ChangeInterestComponent, AskRecommendedComponent, ReportProblemComponent, TouristProblemsOverviewComponent],
   imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   exports: [TouristLandingPageComponent],
 })

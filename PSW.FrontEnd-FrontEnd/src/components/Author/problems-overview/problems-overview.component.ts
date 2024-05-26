@@ -26,15 +26,7 @@ export class ProblemsOverviewComponent implements OnInit {
     });
     this.userId = this.authService.user$.getValue().id;
 
-    this.problemService.getAllByTourAuthorIdOnWait(this.userId).subscribe({
-      next: (problems) => {
-        this.problems = problems;
-        console.log(problems);
-      },
-      error: (error) => {
-        console.error('Error getting problems:', error);
-      },
-    });
+    this.loadProblems();
 
     this.problemService.setAllToSeen(this.userId).subscribe({
       next: () => {
@@ -46,9 +38,21 @@ export class ProblemsOverviewComponent implements OnInit {
     });
   }
 
+  loadProblems(): void {
+    this.problemService.getAllByTourAuthorId(this.userId).subscribe({
+      next: (problems) => {
+        this.problems = problems;
+      },
+      error: (error) => {
+        console.error('Error getting problems:', error);
+      },
+    });
+  }
+
   markAsDone(problemId: number) {
     this.problemService.setStatusToResolved(problemId).subscribe({
       next: () => {
+        this.loadProblems();
         this.snackBar.open('Problem marked as resolved', 'Close', {
           duration: 2000,
           verticalPosition: 'top',
@@ -69,6 +73,7 @@ export class ProblemsOverviewComponent implements OnInit {
           verticalPosition: 'top',
           horizontalPosition: 'right',
         });
+        this.loadProblems();
       },
       error: (error) => {
         console.error('Error sending problem to revision:', error);

@@ -41,24 +41,6 @@
                 </ng-template>
               </ng-template>
             </p>
-            <div class="mt-10 mb-0 flex justify-center">
-              <button
-                [disabled]="problem.status != 0"
-                (click)="markAsDone(problem.id)"
-                class="px-6 py-3 uppercase font-semibold text-violet-900 bg-violet-300 p-2 rounded duration-300"
-                [class.hover:bg-violet-400]="problem.status == 0"
-              >
-                Mark as done
-              </button>
-              <button
-                [disabled]="problem.status != 0"
-                (click)="sendToRevision(problem.id)"
-                class="ml-2 px-6 py-3 uppercase font-semibold text-violet-900 bg-violet-300 p-2 rounded duration-300"
-                [class.hover:bg-violet-400]="problem.status == 0"
-              >
-                Send to revision
-              </button>
-            </div>
           </div>
         </div>
       </div>
