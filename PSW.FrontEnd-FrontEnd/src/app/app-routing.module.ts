@@ -25,6 +25,7 @@ import { ReportProblemComponent } from '../components/Tourist/report-problem/rep
 import { ProblemsOverviewComponent } from '../components/Author/problems-overview/problems-overview.component';
 import { AdminManageProblemsComponent } from '../components/Admin/admin-manage-problems/admin-manage-problems.component';
 import { TouristProblemsOverviewComponent } from '../components/Tourist/tourist-problems-overview/tourist-problems-overview.component';
+import { ManageUsersComponent } from '../components/Admin/manage-users/manage-users.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: 'admin-manage-problems',
     component: AdminManageProblemsComponent,
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'manage-users',
+    component: ManageUsersComponent,
     canActivate: [AdminGuard],
   },
   //AUTHOR

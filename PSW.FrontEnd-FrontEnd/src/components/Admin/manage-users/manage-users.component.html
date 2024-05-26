@@ -1,0 +1,36 @@
+<div class="flex justify-center items-center h-screen">
+  <div class="container m-auto animate-flip-down">
+    <div *ngIf="users.length === 0" class="text-center p-4">
+      <p class="text-xl text-gray-800">You don't have any suspicious users.</p>
+    </div>
+    <table
+      *ngIf="users.length > 0"
+      class="table-fixed w-full max-h-3/4 overflow-auto rounded-lg shadow-lg"
+    >
+      <thead class="bg-violet-500 text-white">
+        <tr>
+          <th class="w-1/4 px-4 py-2">Report ID</th>
+          <th class="w-1/2 px-4 py-2">Creation Date</th>
+          <th class="w-1/4 px-4 py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of users" class="bg-white bg-opacity-25">
+        <tr
+          class="hover:bg-violet-300 hover:bg-opacity-50 transition duration-150 ease-in-out"
+        >
+          <td class="border px-4 py-2 text-center">{{ user.id }}</td>
+          <td class="border px-4 py-2 text-center">
+            {{ user.name }}
+          </td>
+          <td class="border px-4 py-2 text-center">
+            <button
+              class="inline-block px-4 py-2 text-white bg-violet-500 rounded-lg shadow-lg hover:bg-violet-700 transition duration-150 ease-in-out"
+            >
+              Block
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
