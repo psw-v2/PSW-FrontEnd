@@ -46,7 +46,7 @@ export class TouristLandingPageComponent implements OnInit {
         this.count = count;
         if (count > 0) {
           this.toastr.info(
-            'You have ${count} tour recommendations',
+            `You have ${count} tour recommendations`,
             'New Recommendations'
           );
           // this.snackBar.open(
