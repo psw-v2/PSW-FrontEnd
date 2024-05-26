@@ -40,6 +40,12 @@
             *ngIf="user && user.role == 'admin'"
             >Manage users</a
           >
+          <a
+            class="py-3 px-2 duration-300 hover:text-indigo-400"
+            [routerLink]="['/blocked-users']"
+            *ngIf="user && user.role == 'admin'"
+            >Blocked users</a
+          >
 
           <!-- AUTHOR -->
           <a

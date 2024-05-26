@@ -105,6 +105,32 @@ export class AuthService {
     );
   }
 
+  blockUser(id: number): Observable<any> {
+    return this.http.put(
+      `https://localhost:44333/api/users/BlockUser/${id}`,
+      {}
+    );
+  }
+
+  unblockUser(id: number): Observable<any> {
+    return this.http.put(
+      `https://localhost:44333/api/users/UnblockUser/${id}`,
+      {}
+    );
+  }
+
+  getAllBlocked(): Observable<any[]> {
+    return this.http.get<any[]>(
+      `https://localhost:44333/api/users/GetAllBlocked`
+    );
+  }
+
+  getAllUsersElegableForBlock(): Observable<any[]> {
+    return this.http.get<any[]>(
+      `https://localhost:44333/api/problems/GetAllUsersElegableForBlock`
+    );
+  }
+
   public decodeToken(token: string): any {
     const parts = token.split('.');
     if (parts.length !== 3) {

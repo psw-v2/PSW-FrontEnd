@@ -3,13 +3,12 @@ import { AuthService } from '../../../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-manage-users',
-  templateUrl: './manage-users.component.html',
-  styleUrl: './manage-users.component.scss',
+  selector: 'app-blocked-users',
+  templateUrl: './blocked-users.component.html',
+  styleUrls: ['./blocked-users.component.scss'],
 })
-export class ManageUsersComponent implements OnInit {
+export class BlockedUsersComponent implements OnInit {
   users: any[] = [];
-
   constructor(
     private authService: AuthService,
     private snackBar: MatSnackBar
@@ -20,7 +19,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   loadUsers(): void {
-    this.authService.getAllUsersElegableForBlock().subscribe({
+    this.authService.getAllBlocked().subscribe({
       next: (data) => {
         this.users = data;
         console.log(this.users);
@@ -31,10 +30,10 @@ export class ManageUsersComponent implements OnInit {
     });
   }
 
-  blockUser(userId: number): void {
-    this.authService.blockUser(userId).subscribe({
+  unblockUser(userId: number): void {
+    this.authService.unblockUser(userId).subscribe({
       next: () => {
-        this.snackBar.open('User blocked successfully', 'Close', {
+        this.snackBar.open('User unblocked successfully', 'Close', {
           duration: 2000,
         });
         this.loadUsers();

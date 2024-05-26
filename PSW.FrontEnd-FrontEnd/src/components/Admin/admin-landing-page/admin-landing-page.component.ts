@@ -20,11 +20,13 @@ export class AdminLandingPageComponent {
   ngOnInit() {
     this.problemService.getAllOnRevision().subscribe({
       next: (problems) => {
-        this.problems = problems;
-        this.toastr.info(
-          `You have ${problems.length} problems on revision`,
-          'Problems on revision'
-        );
+        if (problems.length > 0) {
+          this.problems = problems;
+          this.toastr.info(
+            `You have ${problems.length} problems on revision`,
+            'Problems on revision'
+          );
+        }
       },
       error: (error) => {
         console.error('Error getting problems:', error);

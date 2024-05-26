@@ -26,6 +26,7 @@ import { ProblemsOverviewComponent } from '../components/Author/problems-overvie
 import { AdminManageProblemsComponent } from '../components/Admin/admin-manage-problems/admin-manage-problems.component';
 import { TouristProblemsOverviewComponent } from '../components/Tourist/tourist-problems-overview/tourist-problems-overview.component';
 import { ManageUsersComponent } from '../components/Admin/manage-users/manage-users.component';
+import { BlockedUsersComponent } from '../components/Admin/blocked-users/blocked-users.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path: 'manage-users',
     component: ManageUsersComponent,
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'blocked-users',
+    component: BlockedUsersComponent,
     canActivate: [AdminGuard],
   },
   //AUTHOR
