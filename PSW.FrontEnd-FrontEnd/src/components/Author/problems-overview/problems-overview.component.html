@@ -19,28 +19,19 @@
               {{ problem.description }}
             </p>
             <p class="mt-2 flex justify-center text-lg">
-              <ng-container *ngIf="problem.status === 0; else notDraft"
-                >On wait</ng-container
+              <ng-container *ngIf="problem.status === 0">On wait</ng-container>
+              <ng-container *ngIf="problem.status === 1">Solved</ng-container>
+              <ng-container *ngIf="problem.status === 2"
+                >On revision</ng-container
               >
-              <ng-template #notDraft>
-                <ng-container *ngIf="problem.status === 1; else notPublished"
-                  >Solved</ng-container
-                >
-                <ng-template #notPublished>
-                  <ng-container *ngIf="problem.status === 2; else notRevisioned"
-                    >On revision</ng-container
-                  >
-                  <ng-template #notRevisioned>
-                    <ng-container *ngIf="problem.status === 2; else notArchived"
-                      >Discarded</ng-container
-                    >
-                    <ng-template #notArchived>
-                      <!-- You can put some default text here if problem.status is not 0, 1, or 2 -->
-                    </ng-template>
-                  </ng-template>
-                </ng-template>
-              </ng-template>
+              <ng-container *ngIf="problem.status === 3"
+                >Discarded</ng-container
+              >
+              <ng-container *ngIf="problem.status > 3 || problem.status < 0"
+                >Unknown Status</ng-container
+              >
             </p>
+
             <div class="mt-10 mb-0 flex justify-center">
               <button
                 [disabled]="problem.status != 0"

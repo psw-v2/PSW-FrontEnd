@@ -29,9 +29,7 @@ export class ProblemsOverviewComponent implements OnInit {
     this.loadProblems();
 
     this.problemService.setAllToSeen(this.userId).subscribe({
-      next: () => {
-        console.log('Problems set to seen');
-      },
+      next: () => {},
       error: (error) => {
         console.error('Error setting problems to seen:', error);
       },

@@ -7,6 +7,7 @@ import { ShoppingCartService } from '../../../services/shopping-cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TourRecommendationService } from '../../../services/tour-recommendation.service';
 import { ToastrService } from 'ngx-toastr';
+import { filter, from, map, mergeMap, toArray } from 'rxjs';
 
 @Component({
   selector: 'app-tourist-landing-page',
@@ -91,14 +92,20 @@ export class TouristLandingPageComponent implements OnInit {
   toggleSlider() {
     this.isAwarded = !this.isAwarded;
 
-    //FALSE = ALL , TRUE = AWARDED
-    console.log(this.tours);
-    if (this.isAwarded == true) {
-      this.tours.forEach((tour) => {
-        if (this.authService.isAuthorAwarded(tour.authorId)) {
-          this.tours = this.tours.filter((tour) => tour.authorId !== 1);
-        }
-      });
+    if (this.isAwarded) {
+      from(this.tours)
+        .pipe(
+          mergeMap((tour: any) =>
+            this.authService.isAuthorAwarded(tour.authorId).pipe(
+              filter((isAwarded) => isAwarded),
+              map(() => tour)
+            )
+          ),
+          toArray()
+        )
+        .subscribe((filteredTours: any) => {
+          this.tours = filteredTours;
+        });
     } else {
       this.tourService.getForUserPurchase(this.userId).subscribe((tours) => {
         this.tours = tours;
