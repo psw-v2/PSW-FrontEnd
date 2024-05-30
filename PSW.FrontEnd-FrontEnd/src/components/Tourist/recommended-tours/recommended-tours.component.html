@@ -16,7 +16,7 @@
       <div class="grid grid-cols-3 gap-16">
         <div *ngFor="let tour of tours">
           <div
-            class="w-64 h-56 overflow-hidden rounded-lg bg-violet-100 border border-violet-300 bg-opacity-55 shadow-sm duration-300 hover:scale-105"
+            class="w-96 h-64 overflow-hidden rounded-lg bg-violet-100 border border-violet-300 bg-opacity-55 shadow-sm duration-300 hover:scale-105"
           >
             <h1 class="mt-2 text-xl font-semibold flex justify-center">
               {{ tour.name }}
@@ -58,18 +58,24 @@
                 </ng-template>
               </ng-template>
             </p>
-            <div class="mt-5 flex justify-center">
+            <div class="mt-5 flex justify-center gap-2">
               <button
                 [routerLink]="'/tour-details/' + tour.id"
-                class="uppercase py-3 px-1.5 mr-2 font-semibold text-violet-900 bg-violet-300 p-0 rounded duration-300 hover:bg-violet-400"
+                class="uppercase py-3 px-0.5 font-semibold text-violet-900 bg-violet-300 p-0 rounded duration-300 hover:bg-violet-400"
               >
                 View details
               </button>
               <button
                 (click)="addToCart(tour.id)"
-                class="uppercase py-3 px-1.5 font-semibold text-violet-900 bg-violet-300 p-0 rounded duration-300 hover:bg-violet-400"
+                class="uppercase py-3 px-0.5 font-semibold text-violet-900 bg-violet-300 p-0 rounded duration-300 hover:bg-violet-400"
               >
                 Add to cart
+              </button>
+              <button
+                (click)="notInterested(tour.id)"
+                class="uppercase py-3 px-0.5 font-semibold text-violet-900 bg-violet-300 p-0 rounded duration-300 hover:bg-violet-400"
+              >
+                Not interested
               </button>
             </div>
           </div>

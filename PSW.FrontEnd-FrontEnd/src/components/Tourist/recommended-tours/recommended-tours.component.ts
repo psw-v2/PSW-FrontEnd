@@ -32,6 +32,10 @@ export class RecommendedToursComponent {
     });
     this.userId = this.authService.user$.getValue().id;
 
+    this.loadRecommendedTours();
+  }
+
+  loadRecommendedTours(): void {
     this.trService
       .getAllTourRecommendationsForUser(this.userId)
       .subscribe((tours) => {
@@ -59,5 +63,21 @@ export class RecommendedToursComponent {
         console.error('Error adding tour to cart:', error);
       }
     );
+  }
+
+  notInterested(tourId: number): void {
+    this.trService
+      .deleteTourRecommendationByUserIdAndTourId(this.userId, tourId)
+      .subscribe({
+        next: () => {
+          this.loadRecommendedTours();
+          this.snackBar.open('Tour removed from recommendations', 'Close', {
+            duration: 2000,
+          });
+        },
+        error: (error) => {
+          console.error('Error removing tour from recommendations:', error);
+        },
+      });
   }
 }
